@@ -1,0 +1,19 @@
+.slider{
+    position: absolute;
+    top: 200px;
+    padding: 0;
+    margin-bottom: 5px;
+    left: 75px;
+}
+.get-app {
+    background: orange;
+    padding: 15px;
+    border-radius: 20px; 
+    color: white;
+    font-size: 20px;
+}
+.button-primary {
+    display: flex;
+    justify-content: left;
+    font-size: 40px;
+}

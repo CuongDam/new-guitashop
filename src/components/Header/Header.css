@@ -1,0 +1,13 @@
+.img-right{
+    width: 45%;
+    border-radius: 2px 2px 120px 150px;
+   padding-right: 0;
+   margin-right: 0;
+   border-right: 0;
+   padding-right: 60px;
+}
+.header{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
