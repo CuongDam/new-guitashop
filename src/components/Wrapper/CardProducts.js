@@ -3,8 +3,8 @@ import storeProduct from "./CardData";
 import { Card, Col, Row } from "antd";
 import "./CSS/CardProduct.css"
 
-const DATA = storeProduct;
 
+const DATA = storeProduct;
 
 
 const CardProduct = () => {

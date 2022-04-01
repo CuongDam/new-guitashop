@@ -2,15 +2,15 @@ import React from 'react'
 import './App.css';
 import Header from './components/Header/Header';
 import CardProduct from './components/Wrapper/CardProducts';
-import 'antd/dist/antd.css';
 import Wrapper from './components/Wrapper/Wrapper';
-
+import 'antd/dist/antd.css';
 function App() {
   return (
     <div className="App">
+
      <Header />
-     {/* <CardProduct /> */}
-     <Wrapper />
+     <CardProduct />
+     {/* <Wrapper /> */}
     </div>
   );
 }
