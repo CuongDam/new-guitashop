@@ -10,7 +10,7 @@ const DATA = storeProduct;
 const CardProduct = () => {
   return (
     <div className="card">
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div style={{ display: "flex", justifyContent: "center", marginBottom:"35px" }}>
         <h1 style={{fontSize: "40px", fontWeight:"bold"}}>Checkout the</h1> <h1 style={{fontSize: "40px", fontWeight:"bold", marginLeft:"10px", color:"orange"}}>Store</h1>
       </div>
       <div className="poster-card">

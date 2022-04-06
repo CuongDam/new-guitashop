@@ -1,0 +1,241 @@
+/* body {
+    background: #0e101c;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+        "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+        sans-serif;
+}
+
+form {
+    max-width: 500px;
+    margin: 10px auto;
+}
+
+h1 {
+    font-weight: 100;
+    color: white;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(79, 98, 148);
+}
+
+.form {
+    background: #0e101c;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+p {
+    color: #bf1650;
+}
+
+p::before {
+    display: inline;
+    content: "⚠ ";
+}
+
+input {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid white;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+label {
+    line-height: 2;
+    text-align: left;
+    display: block;
+    margin-bottom: 13px;
+    margin-top: 20px;
+    color: white;
+    font-size: 14px;
+    font-weight: 200;
+}
+
+button[type="submit"],
+input[type="submit"] {
+    background: #ec5990;
+    color: white;
+    text-transform: uppercase;
+    border: none;
+    margin-top: 40px;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 100;
+    letter-spacing: 10px;
+}
+
+button[type="submit"]:hover,
+input[type="submit"]:hover {
+    background: #bf1650;
+}
+
+button[type="submit"]:active,
+input[type="button"]:active,
+input[type="submit"]:active {
+    transition: 0.3s all;
+    transform: translateY(3px);
+    border: 1px solid transparent;
+    opacity: 0.8;
+}
+
+input:disabled {
+    opacity: 0.4;
+}
+
+input[type="button"]:hover {
+    transition: 0.3s all;
+}
+
+button[type="submit"],
+input[type="button"],
+input[type="submit"] {
+    -webkit-appearance: none;
+}
+
+.App {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+button[type="button"] {
+    display: block;
+    appearance: none;
+    background: #333;
+    color: white;
+    border: none;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 4px;
+}
+
+hr {
+    margin-top: 30px;
+}
+
+button {
+    display: block;
+    appearance: none;
+    margin-top: 40px;
+    border: 1px solid #333;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 4px;
+}
+
+.btn-signIn {
+    background-color: #EC5990;
+    margin-left: 410px;
+    display: flex;
+    color: white;
+}
+
+button:hover {
+    transition: 0.3s all;
+    background-color: #bf1650;
+}
+
+
+.modal {
+    font-size: 12px;
+  }
+  .modal > .header {
+    width: 100%;
+    border-bottom: 1px solid gray;
+    font-size: 18px;
+    text-align: center;
+    padding: 5px;
+  }
+  .modal > .content {
+    width: 100%;
+    padding: 10px 5px;
+  }
+  .modal > .actions {
+    margin: auto;
+  }
+  .modal > .actions {
+    width: 100%;
+    padding: 10px 5px;
+    text-align: center;
+  }
+  /* .modal > .close {
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    padding: 2px 5px;
+    line-height: 20px;
+    right: -10px;
+    top: -10px;
+    font-size: 24px;
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1px solid #cfcece;
+  } */
+
+/* input{
+    margin-bottom: 8px;
+  }
+
+  .label{
+      color: black;
+  } */
+
+.modal-title.h4 {
+    margin-left: 200px;
+    color: white;
+}
+
+.form-row {
+    margin-bottom: 15px;
+    display: flex;
+    min-width: 400px;
+    min-height: max-content;
+}
+
+.form-input {
+    flex: 1;
+}
+
+.form-label {
+    min-width: 120px;
+    display: flex;
+    margin-top: 10px;
+}
+
+.banner-img {
+    border-radius: 0px 0px 151px 360px;
+    position: absolute;
+    width: 672px;
+    height: 615px;
+    right: 0px;
+    top: 0px;
+}
+
+.slider {
+    position: absolute;
+    width: 630px;
+    height: 291px;
+    left: 120px;
+    top: 255px;
+
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+
+.get-app {
+    background: orange;
+    padding: 15px;
+    border-radius: 20px; 
+    color: white;
+    font-size: 20px;
+}
+.button-primary {
+    display: flex;
+    justify-content: left;
+    font-size: 40px;
+}

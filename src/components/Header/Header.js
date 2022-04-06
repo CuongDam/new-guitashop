@@ -1,21 +1,23 @@
-import React from "react";
-import image from "../images/HD3.jpg";
+import React, { useState } from "react";
 import "./Header.css";
-import Slider from "./slider/Slider";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Navbar";
-import Home from "./pages";
+import Home from "./pages/index";
 import Store from "./pages/Store";
 import Collection from "./pages/Collection";
 import Support from "./pages/Support";
 
-const Header = () => {
+const Header = () => { 
+  
+  // const [token, setToken] = useState();
+  
+  // if(!token) {
+  //   return
+  // }
+
   return (
-    // <div className='header'>
-    //     {/* <Menu></Menu> */}
-    //     <img className='img-right' src = {image} />
-    //     {/* <Slider></Slider> */}
-    // </div>
+  
+
     <>
       <Router>
         <Navbar />
