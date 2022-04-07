@@ -1,30 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as Yup from "yup";
+import React, { useState } from "react";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
+import { defaultLogin } from "../utils";
 
-// async function loginUser(credentials) {
-//   return fetch("http://localhost:8080/login", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(credentials),
-//   }).then((data) => data.json());
-// }
 
-function Login({ handleClose, show }) {
-  const schema = Yup.object().shape({
-    email: Yup.string().email().required(),
-    password: Yup.string().min(8).max(32).required(),
+const Login = (props) => {
+  const { handleClose, show } = props;
+
+  const schema = yup.object().shape({
+    email: yup.string().email().required(),
+    password: yup.string().min(8).max(32).required(),
   });
-
-  //   const [isShow, setIsShow] = useState(show);
-  // function setToken(userToken) {
-  //     sessionStorage.setItem('token', JSON.stringify(userToken));
-  //   }
 
   const {
     register,
@@ -33,29 +21,40 @@ function Login({ handleClose, show }) {
     reset,
   } = useForm({ resolver: yupResolver(schema) });
 
-  //   const onSubmit = (data) => {
-  //     console.log(data);
-  //     reset();
-  //   };
-
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-
-  //   const onSubmit = async (e) => {
-  //     e.preventDefault();
-  //     const token = await loginUser({
-  //       email,
-  //       password,
-  //     });
-  //     setToken(token);
-  //   };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isAuthenticated, setAuthenticated] = useState(false);
+  // const user = {
+  //   email: email,
+  //   password: password,
+  // };
 
   const handleCloseModal = () => {
     reset();
     handleClose();
   };
 
-  const onSubmit = (data) => console.log(data);
+  const isLogin = () => {
+    if (
+      defaultLogin.defaultUsername === email &&
+      defaultLogin.defaultPassword === password
+    ) {
+      setAuthenticated(true);
+    } else setAuthenticated(false);
+    return isAuthenticated;
+  };
+
+  // const isLogin = () => {
+  //   if (
+  //     defaultLogin.defaultUsername === email &&
+  //     defaultLogin.defaultPassword === password
+  //   ) {
+  //     isAuthenticated = true;
+  //     console.log(isAuthenticated);
+  //   } else {
+  //     isAuthenticated = false;
+  //   }
+  // };
 
   return (
     <>
@@ -67,11 +66,10 @@ function Login({ handleClose, show }) {
         </Modal.Header>
 
         <Modal.Body>
-          <form onSubmit={handleSubmit(onSubmit)}>
-              
+          <form onSubmit={handleSubmit}>
             <label className="form-label"> Enter your email: </label>
             <input
-              value={email}
+              // value={email}
               onChange={(e) => setEmail(e.target.value)}
               style={{ display: "flex", width: "100%", marginBottom: "10px" }}
               {...register("email")}
@@ -84,17 +82,17 @@ function Login({ handleClose, show }) {
                   color: "red",
                   textDecoration: "underline red",
                   marginBottom: "15px",
+                  display: "flex"
                 }}
               >
-                email không hợp lệ.{" "}
+                email không hợp lệ.
               </span>
             )}
 
             <label className="form-label"> Your Password: </label>
             <input
-              value={password}
+              // value={password}
               onChange={(e) => setPassword(e.target.value)}
-              // className="form-input"
               style={{ display: "flex", width: "100%" }}
               {...register("password")}
               placeholder="your password"
@@ -105,7 +103,7 @@ function Login({ handleClose, show }) {
                 Password must be at least 8 characters.
               </span>
             )}
-  
+
             <hr />
             <div style={{ display: "flex", justifyContent: "right" }}>
               <button
@@ -134,22 +132,9 @@ function Login({ handleClose, show }) {
             </div>
           </form>
         </Modal.Body>
-
-        {/* <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button
-            style={{ backgroundColor: "orange" }}
-            variant="primary"
-            onClick={handleSubmit()}
-          >
-            Submit
-          </Button>
-        </Modal.Footer> */}
       </Modal>
     </>
   );
-}
- 
+};
+
 export default Login;

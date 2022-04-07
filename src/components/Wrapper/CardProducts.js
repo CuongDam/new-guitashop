@@ -3,7 +3,6 @@ import storeProduct from "./CardData";
 import { Card, Col, Row } from "antd";
 import "./CSS/CardProduct.css"
 
-
 const DATA = storeProduct;
 
 
@@ -22,7 +21,7 @@ const CardProduct = () => {
           {DATA.map((card, index) => (
             <Col span={8} key={card.id}>
               <Card  bordered={false}>
-                <img className="img-card" src={card.path} />
+                <img className="img-card" src={card.path} />  
                 <div style={{fontSize:"25px", marginLeft:"70px"}}>{card.title}</div>
                 <div className="text">{card.price}</div>
               </Card>

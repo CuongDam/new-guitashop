@@ -68,8 +68,8 @@ const Navbar = () => {
           {/* <NavLink to="/sign-up">Sign Up</NavLink> */}
         </NavMenu>
         <NavBtn>
-          <NavBtnLink to="#" onClick={handleShow}>
-            Sign In
+          <NavBtnLink to="/log-in"  onClick={handleShow}>
+            Log In
           </NavBtnLink>
         </NavBtn>
         
