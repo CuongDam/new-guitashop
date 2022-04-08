@@ -1,60 +1,48 @@
 import React, { useState } from "react";
-import { yupResolver } from '@hookform/resolvers/yup';
+import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import Modal from "react-bootstrap/Modal";
+
 import { defaultLogin } from "../utils";
 
+const schema = yup.object().shape({
+  email: yup.string().email().required(),
+  password: yup.string().min(8).max(32).required(),
+});
 
 const Login = (props) => {
-  const { handleClose, show } = props;
 
-  const schema = yup.object().shape({
-    email: yup.string().email().required(),
-    password: yup.string().min(8).max(32).required(),
-  });
+  const { handleClose, show } = props;
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
-  } = useForm({ resolver: yupResolver(schema) });
+    reset
+  } = useForm({ resolver: yupResolver(schema), });
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isAuthenticated, setAuthenticated] = useState(false);
-  // const user = {
-  //   email: email,
-  //   password: password,
-  // };
-
-  const handleCloseModal = () => {
-    reset();
-    handleClose();
-  };
 
   const isLogin = () => {
     if (
       defaultLogin.defaultUsername === email &&
       defaultLogin.defaultPassword === password
     ) {
-      setAuthenticated(true);
-    } else setAuthenticated(false);
-    return isAuthenticated;
+      return true;
+    } else return false;
   };
+  
+const onSubmitHandler = (data) => {
+  console({data});
+  reset();
+}
 
-  // const isLogin = () => {
-  //   if (
-  //     defaultLogin.defaultUsername === email &&
-  //     defaultLogin.defaultPassword === password
-  //   ) {
-  //     isAuthenticated = true;
-  //     console.log(isAuthenticated);
-  //   } else {
-  //     isAuthenticated = false;
-  //   }
-  // };
+  const handleCloseModal = () => {
+    reset();
+    handleClose();
+  };
 
   return (
     <>
@@ -66,7 +54,7 @@ const Login = (props) => {
         </Modal.Header>
 
         <Modal.Body>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit(onSubmitHandler)}>
             <label className="form-label"> Enter your email: </label>
             <input
               // value={email}
@@ -82,7 +70,7 @@ const Login = (props) => {
                   color: "red",
                   textDecoration: "underline red",
                   marginBottom: "15px",
-                  display: "flex"
+                  display: "flex",
                 }}
               >
                 email không hợp lệ.
