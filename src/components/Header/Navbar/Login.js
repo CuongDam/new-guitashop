@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import Modal from "react-bootstrap/Modal";
 
 import { defaultLogin } from "../utils";
+import { NavBtnLink, NavBtn, } from "./NavbarElements";
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
@@ -35,7 +36,7 @@ const Login = (props) => {
   };
   
 const onSubmitHandler = (data) => {
-  console({data});
+  console.log({data});
   reset();
 }
 
@@ -106,8 +107,8 @@ const onSubmitHandler = (data) => {
               >
                 Close
               </button>
-              <button
-                onClick={handleSubmit}
+              <NavBtnLink to="/dashboard"
+                onClick={handleSubmit(onSubmitHandler)}
                 type="submit"
                 style={{
                   backgroundColor: "orange",
@@ -116,7 +117,7 @@ const onSubmitHandler = (data) => {
                 }}
               >
                 Sign in
-              </button>
+              </NavBtnLink>
             </div>
           </form>
         </Modal.Body>
