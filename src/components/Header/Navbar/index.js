@@ -22,7 +22,7 @@ import { useNavigate } from "react-router-dom";
 
 // import { useNavigate } from "react-router-dom";
 import Login from "./Login";
-import { Button } from "bootstrap";
+import { Button, Toast, Col } from "bootstrap";
 
 // const schema = yup.object().shape({
 //   email: yup.string().email().required(),
@@ -43,8 +43,30 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem("jsonUser");
     navigation("/store");
-  };
+  };  
+  
+  // const toggleShow = () => setShowToast(!show);
+  // const [showToast, setShowToast] = useState(false)
+  // const  Toast = () => {
 
+  //   return (
+  //       <Col md={6} className="mb-2">
+  //         {/* <Button onClick={toggleShow} className="mb-2">
+  //           Toggle Toast <strong>with</strong> Animation
+  //         </Button> */}
+  //           <Toast.Header>
+  //             <img
+  //               src="holder.js/20x20?text=%20"
+  //               className="rounded me-2"
+  //               alt=""
+  //             />
+  //             <strong className="me-auto">Bootstrap</strong>
+  //             <small>11 mins ago</small>
+  //           </Toast.Header>
+  //           <Toast.Body>Woohoo, you're reading this text in a Toast!</Toast.Body>
+  //       </Col>
+  //   );
+  // }
   // const User = (JSON.parse(localStorage.getItem("jsonUser")) ?? {} );
   // console.log(User.email);
 
@@ -194,23 +216,41 @@ const Navbar = () => {
         </NavLink>
         <Bars />
         <NavMenu>
-          <NavLink to="/store">Store</NavLink>
+          <NavLink to="/store" >
+            Store
+          </NavLink>
           <NavLink to="/collection">Collection</NavLink>
           <NavLink to="/support">Support</NavLink>
           {/* <NavLink to="/sign-up">Sign Up</NavLink> */}
         </NavMenu>
         <NavBtn>
-          <NavBtnLink to="#" onClick={handleShow}>
+          <NavBtnLink
+            to="#"
+            style={{ position: "absolute" }}
+            onClick={handleShow}
+          >
             Log In
           </NavBtnLink>
-        
-        </NavBtn> 
-         {/* <NavBtnLink to="#" onClick={handleLogout}>
+        </NavBtn>
+        <NavBtn>
+          <NavBtnLink
+            to="#"
+            style={{
+              position: "absolute",
+              left: "950px",
+              width: "114px",
+              height: "52px",
+            }}
+            onClick={handleLogout}
+          >
             Log out
-          </NavBtnLink> */}
+          </NavBtnLink>
+        </NavBtn>
         <Login show={show} handleClose={handleClose} />
 
         {/* <Login /> */}
+        
+        {/* <Toast show={showToast} onClose={toggleShow} /> */}
 
         <div>
           <img className="banner-img" src={Banner} />
