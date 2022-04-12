@@ -1,7 +1,7 @@
 import React from 'react'
 
-function Home() {
-    return (
+const Home = () => {
+   return (
         <>
           <div
             style={{

@@ -12,26 +12,26 @@ import "./Modal.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Banner from "../images/left-banner.jpg";
+import { useNavigate } from "react-router-dom";
 
-// import Login from "./Login";
 // import React, { useState } from "react";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { useForm } from "react-hook-form";
-import Modal from "react-bootstrap/Modal";
+// import { yupResolver } from "@hookform/resolvers/yup";
+// import * as yup from "yup";
+// import { useForm } from "react-hook-form";
+// import Modal from "react-bootstrap/Modal";
 
-import { defaultLogin } from "../utils";
+// import { useNavigate } from "react-router-dom";
+import Login from "./Login";
+import { Button } from "bootstrap";
 
-const schema = yup.object().shape({
-  email: yup.string().email().required(),
-  password: yup.string().min(8).max(32).required(),
-});
-
+// const schema = yup.object().shape({
+//   email: yup.string().email().required(),
+//   password: yup.string().min(8).max(32).required(),
+// });
 
 const Navbar = () => {
-
   const [show, setShow] = useState(false);
-  
+
   const handleShow = () => {
     setShow(true);
   };
@@ -39,119 +39,124 @@ const Navbar = () => {
     setShow(false);
   };
 
-  const Login = (props) => {
-
-    // const { handleClose, show } = props;
-  
-    const {
-      register,
-      handleSubmit,
-      formState: { errors },
-      reset
-    } = useForm({ resolver: yupResolver(schema), });
-  
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-  
-    const isLogin = (data) => {
-      if (
-        defaultLogin.defaultUsername === data.email &&
-        defaultLogin.defaultPassword === data.password
-      ) {
-        return true;
-      } else return false;
-    };
-    
-  const onSubmitHandler = (data) => {
-    console.log({data});
-    isLogin(data);
-  }
-  
-    const handleCloseModal = () => {
-      reset();
-      handleClose();
-    };
-  
-    return (
-      <>
-        <Modal show={show} onHide={handleCloseModal}>
-          <Modal.Header style={{ backgroundColor: "orange" }} closeButton>
-            <Modal.Title style={{ marginLeft: "200px", color: "white" }}>
-              Sign In
-            </Modal.Title>
-          </Modal.Header>
-  
-          <Modal.Body>
-            <form onSubmit={handleSubmit(onSubmitHandler)}>
-              <label className="form-label"> Enter your email: </label>
-              <input
-                // value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                style={{ display: "flex", width: "100%", marginBottom: "10px" }}
-                {...register("email")}
-                placeholder="your email"
-                required
-              />
-              {errors.email && (
-                <span
-                  style={{
-                    color: "red",
-                    textDecoration: "underline red",
-                    marginBottom: "15px",
-                    display: "flex",
-                  }}
-                >
-                  email không hợp lệ.
-                </span>
-              )}
-  
-              <label className="form-label"> Your Password: </label>
-              <input
-                // value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                style={{ display: "flex", width: "100%" }}
-                {...register("password")}
-                placeholder="your password"
-                required
-              />
-              {errors.password && (
-                <span style={{ color: "red", textDecoration: "underline red" }}>
-                  Password must be at least 8 characters.
-                </span>
-              )}
-  
-              <hr />
-              <div style={{ display: "flex", justifyContent: "right" }}>
-                <button
-                  onClick={handleCloseModal}
-                  type="close"
-                  style={{
-                    marginRight: "29px",
-                    backgroundColor: "#ccc",
-                    width: "65px",
-                    height: "35px",
-                  }}
-                >
-                  Close
-                </button>
-                <button
-                  onClick={handleSubmit(onSubmitHandler)}
-                  type="submit"
-                  style={{
-                    backgroundColor: "orange",
-                    width: "65px",
-                    height: "35px",
-                  }}
-                >
-                  Signin
-                </button>
-              </div>
-            </form>
-          </Modal.Body>
-        </Modal>
-      </>
-    );
+  const navigation = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("jsonUser");
+    navigation("/store");
   };
+
+  // const User = (JSON.parse(localStorage.getItem("jsonUser")) ?? {} );
+  // console.log(User.email);
+
+  // const Login = (props) => {
+  //   // const { handleClose, show } = props;
+  //   let history = useNavigate();
+  //   props = { history }
+
+  //   const {
+  //     register,
+  //     handleSubmit,
+  //     formState: { errors },
+  //     reset,
+  //   } = useForm({ resolver: yupResolver(schema) });
+
+  //   // const [email, setEmail] = useState("");
+  //   // const [password, setPassword] = useState("");
+
+  //   const onSubmitHandler = (data) => {
+  //     console.log({ data });
+
+  //     const jsonData = JSON.stringify(data);
+  //     localStorage.setItem("jsonUser", jsonData);
+  //     reset();
+  //     props.history.push("/dashboard");
+  //   };
+
+  //   const handleCloseModal = () => {
+  //     reset();
+  //     handleClose();
+  //   };
+
+  //   return (
+  //     <>
+  //       <Modal show={show} onHide={handleCloseModal}>
+  //         <Modal.Header style={{ backgroundColor: "orange" }} closeButton>
+  //           <Modal.Title style={{ marginLeft: "200px", color: "white" }}>
+  //             Sign In
+  //           </Modal.Title>
+  //         </Modal.Header>
+
+  //         <Modal.Body>
+  //           <form onSubmit={handleSubmit(onSubmitHandler)}>
+  //             <label className="form-label"> Enter your email: </label>
+  //             <input
+  //               // value={email}
+  //               // onChange={(e) => setEmail(e.target.value)}
+  //               style={{ display: "flex", width: "100%", marginBottom: "10px" }}
+  //               {...register("email")}
+  //               placeholder="your email"
+  //               required
+  //             />
+  //             {errors.email && (
+  //               <span
+  //                 style={{
+  //                   color: "red",
+  //                   textDecoration: "underline red",
+  //                   marginBottom: "15px",
+  //                   display: "flex",
+  //                 }}
+  //               >
+  //                 email không hợp lệ.
+  //               </span>
+  //             )}
+
+  //             <label className="form-label"> Your Password: </label>
+  //             <input
+  //               // value={password}
+  //               // onChange={(e) => setPassword(e.target.value)}
+  //               style={{ display: "flex", width: "100%" }}
+  //               {...register("password")}
+  //               placeholder="your password"
+  //               required
+  //             />
+  //             {errors.password && (
+  //               <span style={{ color: "red", textDecoration: "underline red" }}>
+  //                 Password must be at least 8 characters.
+  //               </span>
+  //             )}
+
+  //             <hr />
+  //             <div style={{ display: "flex", justifyContent: "right" }}>
+  //               <button
+  //                 onClick={handleCloseModal}
+  //                 type="close"
+  //                 style={{
+  //                   marginRight: "29px",
+  //                   backgroundColor: "#ccc",
+  //                   width: "65px",
+  //                   height: "35px",
+  //                 }}
+  //               >
+  //                 Close
+  //               </button>
+  //               <button
+  //                 onClick={handleSubmit(onSubmitHandler)}
+  //                 type="submit"
+  //                 style={{
+  //                   backgroundColor: "orange",
+  //                   width: "65px",
+  //                   height: "35px",
+  //                 }}
+  //               >
+  //                 Signin
+  //               </button>
+  //             </div>
+  //           </form>
+  //         </Modal.Body>
+  //       </Modal>
+  //     </>
+  //   );
+  // };
 
   return (
     <>
@@ -172,7 +177,7 @@ const Navbar = () => {
                 marginRight: "5px",
                 height: "102px",
                 lineHeight: "102px",
-                fontSize: "30px"
+                fontSize: "30px",
               }}
             ></i>
             <p
@@ -184,7 +189,7 @@ const Navbar = () => {
               }}
             >
               Rythm
-            </p>  
+            </p>
           </div>
         </NavLink>
         <Bars />
@@ -195,13 +200,17 @@ const Navbar = () => {
           {/* <NavLink to="/sign-up">Sign Up</NavLink> */}
         </NavMenu>
         <NavBtn>
-          <NavBtnLink to="/login"  onClick={handleShow}>
+          <NavBtnLink to="#" onClick={handleShow}>
             Log In
           </NavBtnLink>
-        </NavBtn>
         
-        <Login />
-        {/* <Login show={show} handleClose={handleClose} /> */}
+        </NavBtn> 
+         {/* <NavBtnLink to="#" onClick={handleLogout}>
+            Log out
+          </NavBtnLink> */}
+        <Login show={show} handleClose={handleClose} />
+
+        {/* <Login /> */}
 
         <div>
           <img className="banner-img" src={Banner} />
@@ -215,9 +224,9 @@ const Navbar = () => {
               top: "595px",
               color: "orange",
               fontSize: "40px",
-              textAlign:"center",
-              backgroundColor:"white",
-              borderRadius: "25px"
+              textAlign: "center",
+              backgroundColor: "white",
+              borderRadius: "25px",
             }}
           ></i>
         </div>
@@ -254,7 +263,6 @@ const Navbar = () => {
           </div>
         </div>
       </Nav>
-
     </>
   );
 };

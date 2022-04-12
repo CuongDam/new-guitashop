@@ -66,6 +66,13 @@ export const NavBtn = styled.nav`
     @media screen and (max-width: 768px){
         display: none;
     }
+
+    &.hover .btn-logout{
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        background: #fff;
+        color: orange;
+    }
 `
 
 export const NavBtnLink = styled(Link)`

@@ -239,3 +239,19 @@ button:hover {
     justify-content: left;
     font-size: 40px;
 }
+
+.btn-logout{
+    position: absolute;
+    top: 16px;
+    background-color: orange;
+    width: 101px;
+    height: 52px;
+    border-radius: 5px;
+    color: white;
+    font-size: 20px ;
+    padding-left: 18px;
+}
+
+.btn-logout :hover {
+    cursor: pointer;
+}
