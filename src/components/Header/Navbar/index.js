@@ -22,7 +22,9 @@ import { useNavigate } from "react-router-dom";
 
 // import { useNavigate } from "react-router-dom";
 import Login from "./Login";
-import { Button, Toast, Col } from "bootstrap";
+import { Button, Alert } from "bootstrap";
+
+import { isLogin } from "../utils";
 
 // const schema = yup.object().shape({
 //   email: yup.string().email().required(),
@@ -31,6 +33,8 @@ import { Button, Toast, Col } from "bootstrap";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
+
+  const checkAlert = isLogin();
 
   const handleShow = () => {
     setShow(true);
@@ -41,34 +45,33 @@ const Navbar = () => {
 
   const navigation = useNavigate();
   const handleLogout = () => {
+    navigation("store");
     localStorage.removeItem("jsonUser");
-    navigation("/store");
-  };  
-  
-  // const toggleShow = () => setShowToast(!show);
-  // const [showToast, setShowToast] = useState(false)
-  // const  Toast = () => {
+  };
 
-  //   return (
-  //       <Col md={6} className="mb-2">
-  //         {/* <Button onClick={toggleShow} className="mb-2">
-  //           Toggle Toast <strong>with</strong> Animation
-  //         </Button> */}
-  //           <Toast.Header>
-  //             <img
-  //               src="holder.js/20x20?text=%20"
-  //               className="rounded me-2"
-  //               alt=""
-  //             />
-  //             <strong className="me-auto">Bootstrap</strong>
-  //             <small>11 mins ago</small>
-  //           </Toast.Header>
-  //           <Toast.Body>Woohoo, you're reading this text in a Toast!</Toast.Body>
-  //       </Col>
-  //   );
+  const showAlert = () => {
+    if (checkAlert === false) {
+      alert("ban can dang nhap de su dung chuc nang nay!!");
+    }
+  };
+
+  // const [showAlert, setShowAlert] = useState(false);
+  // const handleShowAlert = () => {
+  //   if(checkAlert ===false){
+  //      setShowAlert(true);
+  //   }else setShowAlert(false);
+  // };
+
+  // function AlertDismissibleExample() {
+  //   if (showAlert) {
+  //     return (
+  //       <Alert variant="danger" onClose={() => setShowAlert(false)} dismissible>
+  //         <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+  //         <p>You need to be logged to use this function</p>
+  //       </Alert>
+  //     );
+  //   }
   // }
-  // const User = (JSON.parse(localStorage.getItem("jsonUser")) ?? {} );
-  // console.log(User.email);
 
   // const Login = (props) => {
   //   // const { handleClose, show } = props;
@@ -183,7 +186,7 @@ const Navbar = () => {
   return (
     <>
       <Nav>
-        <NavLink to="/home">
+        <NavLink to="/home" onClick={showAlert}>
           <div
             style={{
               display: "flex",
@@ -216,11 +219,11 @@ const Navbar = () => {
         </NavLink>
         <Bars />
         <NavMenu>
-          <NavLink to="/store" >
-            Store
+          <NavLink to="/store">Store</NavLink>
+          <NavLink to="/collection" onClick={showAlert}>
+            Collection
           </NavLink>
-          <NavLink to="/collection">Collection</NavLink>
-          <NavLink to="/support">Support</NavLink>
+          <NavLink to="/support" onClick={showAlert}>Support</NavLink>
           {/* <NavLink to="/sign-up">Sign Up</NavLink> */}
         </NavMenu>
         <NavBtn>
@@ -249,8 +252,12 @@ const Navbar = () => {
         <Login show={show} handleClose={handleClose} />
 
         {/* <Login /> */}
-        
+
         {/* <Toast show={showToast} onClose={toggleShow} /> */}
+
+        {/* <Toast show={show} toastList={testList} position="bottom-right" /> */}
+
+        {/* <AlertDismissibleExample /> */}
 
         <div>
           <img className="banner-img" src={Banner} />
