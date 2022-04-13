@@ -45,7 +45,7 @@ const Navbar = () => {
 
   const navigation = useNavigate();
   const handleLogout = () => {
-    navigation("store");
+    navigation("/store");
     localStorage.removeItem("jsonUser");
   };
 
@@ -54,7 +54,6 @@ const Navbar = () => {
       alert("ban can dang nhap de su dung chuc nang nay!!");
     }
   };
-
   // const [showAlert, setShowAlert] = useState(false);
   // const handleShowAlert = () => {
   //   if(checkAlert ===false){
@@ -243,6 +242,7 @@ const Navbar = () => {
               left: "950px",
               width: "114px",
               height: "52px",
+
             }}
             onClick={handleLogout}
           >
