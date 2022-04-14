@@ -1,0 +1,84 @@
+
+.modal-title.h4 {
+    margin-left: 200px;
+    color: white;
+}
+
+.form {
+    border: solid 2px ;
+}
+
+.form-row {
+    margin-bottom: 15px;
+    display: flex;
+    min-width: 400px;
+    min-height: max-content;
+}
+
+.form-input {
+    flex: 1;
+}
+
+.form-label {
+    min-width: 120px;
+    display: flex;
+    margin-top: 10px;
+    margin-left: 500px;
+}
+
+.banner-img {
+    border-radius: 0px 0px 151px 360px;
+    position: absolute;
+    width: 672px;
+    height: 615px;
+    right: 0px;
+    top: 0px;
+}
+
+.slider {
+    position: absolute;
+    width: 630px;
+    height: 291px;
+    left: 120px;
+    top: 255px;
+
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.img-right{
+    width: 45%;
+    border-radius: 2px 2px 120px 150px;
+   padding-right: 0;
+   margin-right: 0;
+   border-right: 0;
+   padding-right: 60px;
+}
+
+.get-app {
+    background: orange;
+    padding: 15px;
+    border-radius: 20px; 
+    color: white;
+    font-size: 20px;
+}
+.button-primary {
+    display: flex;
+    justify-content: left;
+    font-size: 40px;
+}
+
+.btn-logout{
+    position: absolute;
+    top: 16px;
+    background-color: orange;
+    width: 101px;
+    height: 52px;
+    border-radius: 5px;
+    color: white;
+    font-size: 20px ;
+    padding-left: 18px;
+}
+
+.btn-logout :hover {
+    cursor: pointer;
+}

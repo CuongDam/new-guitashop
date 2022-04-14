@@ -2,23 +2,19 @@ import React, { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
-import Modal from "react-bootstrap/Modal";
-import { NavBtnLink, NavBtn, } from "./NavbarElements";
+// import Modal from "react-bootstrap/Modal";
 
 import { useNavigate } from "react-router-dom";
+import { defaultLogin } from "./utils";
+
+import "./styles/Modal.css";
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
   password: yup.string().min(8).max(32).required(),
 });
 
-const Login = (props) => {
-
-  const { handleClose, show } = props;
-
-  let history = useNavigate();
-  props = { history }
-
+const Login = () => {
   const {
     register,
     handleSubmit,
@@ -26,48 +22,45 @@ const Login = (props) => {
     reset,
   } = useForm({ resolver: yupResolver(schema) });
 
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
+  const navigation = useNavigate();
 
-  // const isLogin = () => {
-  //   if (
-  //     defaultLogin.defaultUsername === email &&
-  //     defaultLogin.defaultPassword === password
-  //   ) {
-  //     return true;
-  //   } else return false;
-  // };
-  
   const onSubmitHandler = (data) => {
     console.log({ data });
+    if (
+      data.email === defaultLogin.defaultUsername &&
+      data.password === defaultLogin.defaultPassword
+    ) {
+      const jsonData = JSON.stringify(data);
+      localStorage.setItem("jsonUser", jsonData);
+      handleCloseModal();
 
-    const jsonData = JSON.stringify(data);
-    localStorage.setItem("jsonUser", jsonData);
-    handleCloseModal();
-    // props.history.push("/dashboard");
-    
+      alert("dang nhap thanh cong");
+      navigation("/home");
+    } else {
+      alert("sai userName hoac password");
+    }
   };
 
   const handleCloseModal = () => {
     reset();
-    handleClose();
+    // handleClose();
   };
 
   return (
-    <> <Modal show={show} onHide={handleCloseModal}>
-    <Modal.Header style={{ backgroundColor: "orange" }} closeButton>
-      <Modal.Title style={{ marginLeft: "200px", color: "white" }}>
-        Sign In
-      </Modal.Title>
-    </Modal.Header>
-
-    <Modal.Body>
+    <>
       <form onSubmit={handleSubmit(onSubmitHandler)}>
         <label className="form-label"> Enter your email: </label>
         <input
           // value={email}
           // onChange={(e) => setEmail(e.target.value)}
-          style={{ display: "flex", width: "100%", marginBottom: "10px" }}
+          style={{
+            display: "flex",
+            width: "100%",
+            marginBottom: "10px",
+            width: "45%",
+            marginBottom: "10px",
+            marginLeft: "500px",
+          }}
           {...register("email")}
           placeholder="your email"
           required
@@ -89,7 +82,14 @@ const Login = (props) => {
         <input
           // value={password}
           // onChange={(e) => setPassword(e.target.value)}
-          style={{ display: "flex", width: "100%" }}
+          style={{
+            display: "flex",
+            width: "100%",
+            marginBottom: "10px",
+            width: "45%",
+            marginBottom: "10px",
+            marginLeft: "500px",
+          }}
           {...register("password")}
           placeholder="your password"
           required
@@ -106,13 +106,13 @@ const Login = (props) => {
             onClick={handleCloseModal}
             type="close"
             style={{
-              marginRight: "29px",
+              marginRight: "40px",
               backgroundColor: "#ccc",
               width: "65px",
               height: "35px",
             }}
           >
-            Close
+            Clear
           </button>
           <button
             onClick={handleSubmit(onSubmitHandler)}
@@ -121,16 +121,15 @@ const Login = (props) => {
               backgroundColor: "orange",
               width: "65px",
               height: "35px",
+              marginRight: "531px",
             }}
           >
             Signin
           </button>
         </div>
       </form>
-    </Modal.Body>
-  </Modal>
-</>
-);
+    </>
+  );
 };
 
 export default Login;
