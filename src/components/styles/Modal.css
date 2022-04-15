@@ -1,11 +1,10 @@
-
 .modal-title.h4 {
     margin-left: 200px;
     color: white;
 }
 
 .form {
-    border: solid 2px ;
+    border: solid 2px;
 }
 
 .form-row {
@@ -45,29 +44,30 @@
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
-.img-right{
+.img-right {
     width: 45%;
     border-radius: 2px 2px 120px 150px;
-   padding-right: 0;
-   margin-right: 0;
-   border-right: 0;
-   padding-right: 60px;
+    padding-right: 0;
+    margin-right: 0;
+    border-right: 0;
+    padding-right: 60px;
 }
 
 .get-app {
     background: orange;
     padding: 15px;
-    border-radius: 20px; 
+    border-radius: 20px;
     color: white;
     font-size: 20px;
 }
+
 .button-primary {
     display: flex;
     justify-content: left;
     font-size: 40px;
 }
 
-.btn-logout{
+.btn-logout {
     position: absolute;
     top: 16px;
     background-color: orange;
@@ -75,10 +75,131 @@
     height: 52px;
     border-radius: 5px;
     color: white;
-    font-size: 20px ;
+    font-size: 20px;
     padding-left: 18px;
 }
 
 .btn-logout :hover {
     cursor: pointer;
 }
+
+.h2-left{
+    padding-left: 20px;
+    font-weight: 700;
+    margin-left: 60px;
+}
+
+.h2-right{
+    margin-right: 60px;
+    font-weight: 400;
+    color: #ccc;
+    font-size: 20px;
+}
+
+.card-card{
+    font-size: 25px;
+     margin-left: 70px
+}
+
+.text-price{
+    font-size: 18px;
+    font-weight: 400;
+    margin-left: 70px;
+}
+
+i{
+    position: absolute;
+    left: 1335px;
+    top: 207px;
+    padding-bottom: 2px;
+}
+i:hover {
+    color: orange;
+    cursor: pointer;
+  }
+
+/* Mobile: width <740px */
+@media only screen and (max-width: 46.1875em) {}
+
+/* Tablet: width >= 740px adn width < 1024px */
+@media only screen and (min-width: 768px) and (max-width: 1366px) {
+    .slider {
+        display: none;
+    }
+
+    .banner-img {
+        position: absolute;
+        top: 70px;
+        border-radius: 2px;
+        width: 100%;
+        height: 600px;
+        margin-bottom: 15px;
+    }
+
+    .poster-card {
+        display: flex;
+
+    }
+    .h2-left{
+        margin-left: 0px;
+    }
+    .h2-right{
+        margin-right: 20px;
+    }
+    .img-card{
+        padding-left: 0px;
+        width: 218px;
+    }
+    .ant-card-body{
+        padding-left: 10px;
+        margin-bottom: 10px;
+    }
+    .card-card{
+        margin-left: 1px;
+    }
+    .text-price{
+        margin-left: 0px;
+    }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+    .slider {
+        display: none;
+    }
+
+    .banner-img {
+        position: absolute;
+        top: 70px;
+        border-radius: 2px;
+        width: 100%;
+        height: 600px;
+        margin-bottom: 15px;
+    }
+
+    .poster-card {
+        display: flex;
+        justify-content: space-between;
+
+    }
+    .h2-left{
+        margin-left: 0px;
+    }
+    .h2-right{
+        margin-right: 20px;
+    }
+    .site-card-wrapper{
+        display: flex;
+    }
+    .img-card{
+        padding-left: 0px;
+        width: 300px;
+    }
+    .ant-card-body{
+        padding-left: 10px;
+        margin-bottom: 10px;
+    }
+    .text-price{
+        margin-left: 0px;
+    }
+
+    }

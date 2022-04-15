@@ -3,7 +3,7 @@ import storeProduct from "./CardData";
 import { Card, Col, Row } from "antd";
 import "./CardProduct.css";
 import Banner from "./images/left-banner.jpg";
-import "../styles/Modal.css"
+import "../styles/Modal.css";
 
 const Home = () => {
   const DATA = storeProduct;
@@ -31,25 +31,8 @@ const Home = () => {
           </h1>
         </div>
         <div className="poster-card">
-          <h2
-            style={{
-              paddingLeft: "20px",
-              fontWeight: "700",
-              marginLeft: "60px",
-            }}
-          >
-            NEW ON THE BOARD
-          </h2>
-          <h2
-            style={{
-              marginRight: "60px",
-              fontWeight: "400",
-              color: "#ccc",
-              fontSize: "20px",
-            }}
-          >
-            VIEW ALL
-          </h2>
+          <h2 className="h2-left">NEW ON THE BOARD</h2>
+          <h2 className="h2-right">VIEW ALL</h2>
         </div>
         <div className="site-card-wrapper">
           <Row gutter={18}>
@@ -57,10 +40,10 @@ const Home = () => {
               <Col span={8} key={card.id}>
                 <Card bordered={false}>
                   <img className="img-card" src={card.path} />
-                  <div style={{ fontSize: "25px", marginLeft: "70px" }}>
+                  <div className="card-card">
                     {card.title}
                   </div>
-                  <div className="text">{card.price}</div>
+                  <div className="text-price">{card.price}</div>
                 </Card>
               </Col>
             ))}

@@ -7,6 +7,7 @@ import {
   NavBtn,
   NavBtnLink,
 } from "./NavbarElements";
+import "./ResponsiveNav.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -41,16 +42,9 @@ const Navbar = () => {
       <div className="navbar_items">
         {user && (
           <>
-            <Nav>
-              <NavLink to="/home">
-                <div
-                  style={{
-                    display: "flex",
-                    position: "absolute",
-                    top: "-10px",
-                    left: "130px",
-                  }}
-                >
+            <Nav className="Nav-Wrapper">
+              <NavLink className="Nav-Home" to="/home">
+                <div className="div-home">
                   <i
                     className="ti-headphone-alt"
                     style={{
@@ -74,23 +68,14 @@ const Navbar = () => {
                 </div>
               </NavLink>
               <Bars />
-              <NavMenu>
+              <NavMenu className="Nav-Menu">
                 <NavLink to="/store">Store</NavLink>
                 <NavLink to="/collection">Collection</NavLink>
                 <NavLink to="/support">Support</NavLink>
               </NavMenu>
 
               <NavBtn>
-                <NavBtnLink
-                  to="#"
-                  style={{
-                    position: "absolute",
-                    left: "825px",
-                    width: "114px",
-                    height: "52px",
-                  }}
-                  onClick={handleLogout}
-                >
+                <NavBtnLink to="#" className="Nav-Btn-Link" onClick={handleLogout}>
                   Log out
                 </NavBtnLink>
               </NavBtn>
@@ -99,7 +84,7 @@ const Navbar = () => {
         )}
         {!user && (
           <Link
-            style={{ textDecoration: "none", color: "orange"}}
+            style={{ textDecoration: "none", color: "orange" }}
             to="/login"
             className={location.pathname === "/login" ? "navbar_active" : ""}
           >

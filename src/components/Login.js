@@ -7,6 +7,9 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { defaultLogin } from "./utils";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+
 import "./styles/Modal.css";
 
 const schema = yup.object().shape({
@@ -23,6 +26,14 @@ const Login = () => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const navigation = useNavigate();
+
+  const eye = <FontAwesomeIcon icon={faEye}/>
+
+  const [passwordShown, setPasswordShown] = useState(false);
+
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(passwordShown ? false : true);
+  };
 
   const onSubmitHandler = (data) => {
     console.log({ data });
@@ -72,34 +83,43 @@ const Login = () => {
               textDecoration: "underline red",
               marginBottom: "15px",
               display: "flex",
+              marginLeft: "500px",
             }}
           >
             email không hợp lệ.
           </span>
         )}
-
-        <label className="form-label"> Your Password: </label>
-        <input
-          // value={password}
-          // onChange={(e) => setPassword(e.target.value)}
-          style={{
-            display: "flex",
-            width: "100%",
-            marginBottom: "10px",
-            width: "45%",
-            marginBottom: "10px",
-            marginLeft: "500px",
-          }}
-          {...register("password")}
-          placeholder="your password"
-          required
-        />
-        {errors.password && (
-          <span style={{ color: "red", textDecoration: "underline red" }}>
-            Password must be at least 8 characters.
-          </span>
-        )}
-
+        <div>
+          <label className="form-label"> Your Password: </label>
+          <input
+           type={passwordShown ? "text" : "password"}
+            // value={password}
+            // onChange={(e) => setPassword(e.target.value)}
+            style={{
+              display: "flex",
+              width: "100%",
+              marginBottom: "10px",
+              width: "45%",
+              marginBottom: "10px",
+              marginLeft: "500px",
+            }}
+            {...register("password")}
+            placeholder="your password"
+            required
+          />
+          <i onClick={togglePasswordVisiblity}>{eye}</i>
+          {errors.password && (
+            <span
+              style={{
+                color: "red",
+                textDecoration: "underline red",
+                marginLeft: "500px",
+              }}
+            >
+              Password must be at least 8 characters.
+            </span>
+          )}
+        </div>
         <hr />
         <div style={{ display: "flex", justifyContent: "right" }}>
           <button
